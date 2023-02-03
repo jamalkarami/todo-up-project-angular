@@ -6,6 +6,11 @@ import { SignupComponent } from './views/auth/signup/signup.component';
 
 const routes: Routes = [  
   {
+    path : '',
+    redirectTo : 'login',
+    pathMatch : 'full'
+  },
+  {
     path : 'login',
     component : LoginComponent
   },
