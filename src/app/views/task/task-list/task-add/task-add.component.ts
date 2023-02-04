@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Task } from './../../../../model/task';
 import { first } from 'rxjs';
 import  Swal from 'sweetalert2';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-task-add',
@@ -21,7 +22,7 @@ export class TaskAddComponent implements OnInit{
 
   constructor(
     private mTaskService : TaskService,
-    
+    private mAuthService : AuthService
   ){
 
   }
@@ -35,8 +36,7 @@ export class TaskAddComponent implements OnInit{
     task.title = this.taskForm.get('title')?.value || '';
     task.description = this.taskForm.get('description')?.value || '';
     task.scheduledTaskDate = new Date(this.taskForm.get('scheduledTaskDate')?.value || '');    
-    
-    console.log(task);
+    task.user_id = this.mAuthService.user._id;    
     
     this.mTaskService.createTask(task).pipe(first()).subscribe(data=>{
       Swal.fire({

@@ -51,7 +51,7 @@ export class TaskEditComponent implements OnInit {
     this.mTaskService.updateTask(task).pipe(first()).subscribe(data=>{
       Swal.fire({
         icon: 'success',
-        title: 'Created successfully'
+        title: 'Updated successfully'
       })
       console.log(data);      
     },error=>{

@@ -9,26 +9,26 @@ import { Task } from '../model/task';
 })
 export class TaskService {
 
-  private baseURL = environment.apiURL + 'users/tasks';
+  private baseURL = environment.apiURL + 'users';
 
   constructor(
     private mHttpClient : HttpClient
   ) { }
 
 
-  findAll() : Observable<Task[]>{
-    return this.mHttpClient.get<Task[]>(this.baseURL);
+  findAll(user_id : string) : Observable<Task[]>{
+    return this.mHttpClient.get<Task[]>(`${this.baseURL}/${user_id}/tasks`);
   }
 
   deleteTask(id : string) : Observable<string>{
-    return this.mHttpClient.delete<string>(`${this.baseURL}/${id}`);
+    return this.mHttpClient.delete<string>(`${this.baseURL}/tasks/${id}`);
   }
 
   updateTask(task : Task) : Observable<Task>{
-    return this.mHttpClient.put<Task>(`${this.baseURL}/${task._id}`, task);
+    return this.mHttpClient.put<Task>(`${this.baseURL}/tasks/${task._id}`, task);
   }
 
   createTask(task : Task) : Observable<Task[]>{
-    return this.mHttpClient.post<Task[]>(`${this.baseURL}`, task);
+    return this.mHttpClient.post<Task[]>(`${this.baseURL}/tasks`, task);
   }
 }

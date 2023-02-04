@@ -28,7 +28,7 @@ export class TaskListComponent implements OnInit{
   }
 
   loadTask(){
-    this.mTaskService.findAll().pipe(first()).subscribe(tasks=>{
+    this.mTaskService.findAll(this.mAuthService.user._id).pipe(first()).subscribe(tasks=>{
       this.tasks = tasks;
       console.log(tasks);      
     },error=>{
