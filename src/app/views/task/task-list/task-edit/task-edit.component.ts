@@ -34,8 +34,8 @@ export class TaskEditComponent implements OnInit {
     console.log(scheduledDate);        
     this.taskForm= new FormGroup({
       title: new FormControl(title, Validators.required),
-      description: new FormControl(description, Validators.minLength(10)),
-      scheduledTaskDate: new FormControl(scheduledDate),    
+      description: new FormControl(description, [Validators.minLength(10), Validators.required]),
+      scheduledTaskDate: new FormControl(scheduledDate, Validators.required),    
     });            
   }
 

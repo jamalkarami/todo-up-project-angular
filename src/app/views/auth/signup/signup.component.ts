@@ -16,8 +16,8 @@ export class SignupComponent {
 
   signupForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.minLength(4)),
-    email: new FormControl('', Validators.minLength(4)),
+    lastName: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.email),
     password: new FormControl('', [Validators.minLength(4), Validators.required]),
   });
 
