@@ -15,8 +15,8 @@ export class TaskAddComponent implements OnInit{
 
   taskForm = new FormGroup({
     title: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.minLength(10)),
-    scheduledTaskDate: new FormControl(''),    
+    description: new FormControl('',[Validators.minLength(10), Validators.required]),
+    scheduledTaskDate: new FormControl('', Validators.required),    
   });
 
 
