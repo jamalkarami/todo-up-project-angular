@@ -26,16 +26,17 @@ export class TaskEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._id = this.mActivatedRoute.snapshot.queryParamMap.get('_id') || '';
-    let title = this.mActivatedRoute.snapshot.queryParamMap.get('title');
-    let description = this.mActivatedRoute.snapshot.queryParamMap.get('description');
-    let date = this.mActivatedRoute.snapshot.queryParamMap.get('scheduledTaskDate') || '';
+    this._id          = this.mActivatedRoute.snapshot.queryParamMap.get('_id') || '';
+    let title         = this.mActivatedRoute.snapshot.queryParamMap.get('title');
+    let description   = this.mActivatedRoute.snapshot.queryParamMap.get('description');
+    let date          = this.mActivatedRoute.snapshot.queryParamMap.get('scheduledTaskDate') || '';
     let scheduledDate = this.datepipe.transform(date, 'yyyy-MM-dd');;   
-    console.log(scheduledDate);        
+
+          
     this.taskForm= new FormGroup({
-      title: new FormControl(title, Validators.required),
-      description: new FormControl(description, [Validators.minLength(10), Validators.required]),
-      scheduledTaskDate: new FormControl(scheduledDate, Validators.required),    
+      title:              new FormControl(title, Validators.required),
+      description:        new FormControl(description, [Validators.minLength(10), Validators.required]),
+      scheduledTaskDate:  new FormControl(scheduledDate, Validators.required),    
     });            
   }
 

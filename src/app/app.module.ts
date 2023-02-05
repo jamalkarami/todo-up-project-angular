@@ -9,12 +9,14 @@ import { LoginComponent } from './views/auth/login/login.component';
 import { SignupComponent } from './views/auth/signup/signup.component';
 import { FormsModule } from '@angular/forms'; 
 import { HttpInterceptorServices } from './core/http.interceptor';
+import { PageNotFoundComponent } from './views/errors/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent    
+    SignupComponent,
+    PageNotFoundComponent    
   ],
   imports: [
     BrowserModule,
